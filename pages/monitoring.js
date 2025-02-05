@@ -4,8 +4,8 @@ import { getUserId } from '../lib/auth';
 import styles from '../styles/MonitoringPage.module.css';
 import schedule from 'node-schedule';
 
-export async function getServerSideProps(context) {
-    const job = schedule.scheduleJob('* * * * *', async () => {
+export async function getServerSideProps() {
+    schedule.scheduleJob('* * * * *', async () => {
         try {
             const { data: allMonitoringItems, error } = await supabase
                .from('monitoring_items')
